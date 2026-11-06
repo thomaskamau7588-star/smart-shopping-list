@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Shopping List</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -15,7 +17,7 @@
         <p>Plan your shopping and manage your budget.</p>
     </header>
 
-     <main class="container">
+    <main class="container">
 
         <!-- Shopping Summary -->
         <section class="summary">
@@ -40,7 +42,7 @@
             </div>
         </section>
 
-           <!-- Shopping List -->
+        <!-- Shopping List -->
         <section class="shopping-list">
 
             <h2>My Shopping List</h2>
@@ -48,11 +50,7 @@
             <!-- Search and Filter -->
             <div class="list-controls">
 
-                <input
-                    type="search"
-                    id="search-input"
-                    placeholder="Search items..."
-                >
+                <input type="search" id="search-input" placeholder="Search items...">
 
                 <select id="category-filter">
                     <option value="All">All Categories</option>
@@ -71,7 +69,7 @@
                 </select>
 
             </div>
-             
+
             <div id="shopping-items">
 
                 <p id="empty-message">
@@ -79,7 +77,7 @@
                 </p>
 
             </div>
-             <!-- Clear Shopping List -->
+            <!-- Clear Shopping List -->
             <button type="button" id="clear-button">
                 Clear Shopping List
             </button>
@@ -87,3 +85,11 @@
         </section>
 
     </main>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Smart Shopping List. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
