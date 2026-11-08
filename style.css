@@ -144,3 +144,44 @@ header {
     object-fit: cover;
     border-radius: 12px;
 }
+
+/* Features Section */
+.features {
+    background-color: var(--white);
+    padding: 65px 7%;
+    text-align: center;
+}
+
+.section-heading h2 {
+    color: var(--dark-green);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: #666666;
+}
+
+.feature-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.feature-card {
+    padding: 30px 20px;
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.feature-card h3 {
+    color: var(--primary-green);
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #555555;
+    font-size: 15px;
+}
