@@ -1,0 +1,18 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+    --primary-green: #2d6a4f;
+    --dark-green: #1b4332;
+    --light-green: #d8f3dc;
+    --background: #f4f8f5;
+    --white: #ffffff;
+    --text-color: #222222;
+    --border-color: #d1d5db;
+}
+
