@@ -185,3 +185,29 @@ header {
     color: #555555;
     font-size: 15px;
 }
+
+/* Call To Action */
+.cta {
+    background-color: var(--light-green);
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.cta h2 {
+    color: var(--dark-green);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.cta p {
+    margin-bottom: 25px;
+}
+
+.cta-button {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
+
+.cta-button:hover {
+    background-color: var(--dark-green);
+}
