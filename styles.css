@@ -1,0 +1,271 @@
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+    --primary-green: #2d6a4f;
+    --dark-green: #1b4332;
+    --light-green: #d8f3dc;
+    --background: #f4f8f5;
+    --white: #ffffff;
+    --text-color: #222222;
+    --border-color: #d1d5db;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navigation */
+header {
+    background-color: var(--white);
+    padding: 18px 7%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--dark-green);
+    font-size: 22px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: var(--primary-green);
+}
+
+.nav-links .nav-button {
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.75)
+    ), url("images/Shopping.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 500px;
+    padding: 80px 7%;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.welcome-text {
+    color: var(--primary-green);
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 {
+    color: var(--dark-green);
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 17px;
+    color: #333333;
+    margin-bottom: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.primary-button,
+.secondary-button,
+.cta-button {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.primary-button {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
+
+.secondary-button {
+    border: 1px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.primary-button:hover {
+    background-color: var(--dark-green);
+}
+
+.secondary-button:hover {
+    background-color: var(--light-green);
+}
+
+/* Features Section */
+.features {
+    background-color: var(--white);
+    padding: 65px 7%;
+    text-align: center;
+}
+
+.section-heading h2 {
+    color: var(--dark-green);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: #666666;
+}
+
+.feature-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.feature-card {
+    padding: 30px 20px;
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.feature-card h3 {
+    color: var(--primary-green);
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #555555;
+    font-size: 15px;
+}
+
+/* Call To Action */
+.cta {
+    background-color: var(--light-green);
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.cta h2 {
+    color: var(--dark-green);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.cta p {
+    margin-bottom: 25px;
+}
+
+.cta-button {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
+
+.cta-button:hover {
+    background-color: var(--dark-green);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-green);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .feature-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 27px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+}
