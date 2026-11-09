@@ -20,14 +20,22 @@ signupForm.addEventListener("submit", function(event) {
 
     const confirmPassword = document.getElementById("confirm-password").value;
 
-        // Check if Passwords Match
-    if (password !== confirmPassword) {
+      // Check if Passwords Match
+        if (password !== confirmPassword) {
 
-        signupMessage.textContent = "Passwords do not match!";
+            signupMessage.textContent = "Passwords do not match!";
+            signupMessage.style.color = "red";
 
-        signupMessage.style.color = "red";
+            return;
+        }
 
-        return;
-    }
+           // Check Password Length
+        if (password.length < 6) {
 
-    });
+            signupMessage.textContent = "Password must be at least 6 characters!";
+            signupMessage.style.color = "red";
+
+            return;
+        }
+
+        
