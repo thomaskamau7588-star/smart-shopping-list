@@ -48,4 +48,11 @@ signupForm.addEventListener("submit", function(event) {
 
         });
 
-        
+         if (existingUser) {
+
+            signupMessage.textContent = "This email is already registered!";
+            signupMessage.style.color = "red";
+
+            return;
+        }
+
