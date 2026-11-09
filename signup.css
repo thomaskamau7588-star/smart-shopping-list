@@ -59,3 +59,33 @@ body {
     color: #666666;
     font-size: 14px;
 }
+
+/* Form Styling */
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-green);
+}
