@@ -111,3 +111,40 @@ body {
     margin-top: 15px;
     font-size: 14px;
 }
+
+/* Signup Link */
+.signup-link {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 14px;
+}
+
+.signup-link a,
+.home-link a {
+    color: var(--primary-green);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-link a:hover,
+.home-link a:hover {
+    text-decoration: underline;
+}
+
+/* Home Link */
+.home-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px 20px;
+    }
+
+    .login-header h1 {
+        font-size: 24px;
+    }
+}
