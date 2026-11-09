@@ -12,3 +12,11 @@ signupForm.addEventListener("submit", function(event) {
 
 });
 
+    // Get User Input Values
+    const fullname = document.getElementById("fullname").value.trim();
+
+    const email = document.getElementById("email").value.trim().toLowerCase();
+
+    const password = document.getElementById("password").value;
+
+    const confirmPassword = document.getElementById("confirm-password").value;
