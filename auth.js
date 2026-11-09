@@ -38,4 +38,14 @@ signupForm.addEventListener("submit", function(event) {
             return;
         }
 
+         // Get Existing Users from Local Storage
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+
+        // Check if Email Already Exists
+        const existingUser = users.find(function(user) {
+            return user.email === email;
+
+        });
+
         
