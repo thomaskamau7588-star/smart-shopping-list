@@ -100,3 +100,18 @@ function displayShoppingItems() {
 
     updateSummary();
 }
+
+// Add Shopping Item
+shoppingForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("item-name").value.trim();
+    const quantity = Number(document.getElementById("item-quantity").value);
+    const category = document.getElementById("item-category").value;
+    const price = Number(document.getElementById("item-price").value);
+
+    if (!name || !category || !Number.isInteger(quantity) ||
+        quantity < 1 || !Number.isFinite(price) || price < 0) {
+        alert("Please enter valid item details.");
+        return;
+    }
