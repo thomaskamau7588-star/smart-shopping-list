@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
 
         <!-- Shopping Summary -->
         <section class="summary">
+
             <div class="summary-card">
                 <h3>Total Items</h3>
                 <p id="total-items">0</p>
@@ -38,12 +40,50 @@
                 <h3>Estimated Cost</h3>
                 <p id="estimated-cost">KSh 0</p>
             </div>
+
         </section>
 
         <!-- Shopping List -->
         <section class="shopping-list">
 
             <h2>My Shopping List</h2>
+
+            <!-- Add Shopping Item Form -->
+            <form id="shopping-form">
+
+                <div class="form-group">
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" placeholder="Enter item name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-quantity">Quantity</label>
+                    <input type="number" id="item-quantity" min="1" value="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-category">Category</label>
+                    <select id="item-category" required>
+                        <option value="">Select Category</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Household">Household Items</option>
+                        <option value="Personal Care">Personal Care</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-price">Price (KSh)</label>
+                    <input type="number" id="item-price" min="0" step="0.01" placeholder="Enter price" required>
+                </div>
+
+                <button type="submit" id="add-button">
+                    Add Item
+                </button>
+
+            </form>
 
             <!-- Search and Filter -->
             <div class="list-controls">
@@ -68,6 +108,7 @@
 
             </div>
 
+            <!-- Shopping Items Display -->
             <div id="shopping-items">
 
                 <p id="empty-message">
@@ -75,6 +116,7 @@
                 </p>
 
             </div>
+
             <!-- Clear Shopping List -->
             <button type="button" id="clear-button">
                 Clear Shopping List
@@ -83,10 +125,14 @@
         </section>
 
     </main>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Smart Shopping List. All rights reserved.</p>
     </footer>
+
+    <!-- Link JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 
