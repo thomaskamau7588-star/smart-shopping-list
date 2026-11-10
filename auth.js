@@ -112,3 +112,19 @@ if (loginForm) {
 
         // Prevent Page Refresh
         event.preventDefault();
+        
+  // Get Login Input Values
+        const email = document.getElementById("email").value.trim().toLowerCase();
+
+        const password = document.getElementById("password").value;
+
+
+        // Get Registered Users
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+
+        // Find User
+        const existingUser = users.find(function(user) {
+            return user.email === email;
+        });
+
