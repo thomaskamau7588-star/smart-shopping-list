@@ -112,7 +112,7 @@ if (loginForm) {
 
         // Prevent Page Refresh
         event.preventDefault();
-        
+
   // Get Login Input Values
         const email = document.getElementById("email").value.trim().toLowerCase();
 
@@ -127,4 +127,30 @@ if (loginForm) {
         const existingUser = users.find(function(user) {
             return user.email === email;
         });
+
+           // Check if User Exists
+        if (!existingUser) {
+
+            loginMessage.textContent = "Account not found. Please create an account.";
+            loginMessage.style.color = "red";
+
+            return;
+        }
+
+
+        // Check Password
+        if (existingUser.password !== password) {
+
+            loginMessage.textContent = "Incorrect password. Please try again.";
+            loginMessage.style.color = "red";
+
+            return;
+        }
+
+
+        // Save Logged In User
+        localStorage.setItem("currentUser", JSON.stringify({
+            fullname: existingUser.fullname,
+            email: existingUser.email
+        }));
 
