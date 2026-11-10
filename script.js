@@ -51,3 +51,30 @@ function displayShoppingItems() {
         : "Your shopping list is empty. Add your first item!";
 
     shoppingItems.appendChild(emptyMessage);
+
+        // Create Shopping Item Cards
+    filteredItems.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "shopping-item";
+
+        const details = document.createElement("div");
+        details.className = "item-details";
+
+        const name = document.createElement("h3");
+        name.textContent = item.name;
+
+        const info = document.createElement("p");
+        info.textContent = `Quantity: ${item.quantity} | Category: ${item.category}`;
+
+        const price = document.createElement("p");
+        price.textContent = `Total: KSh ${(item.price * item.quantity).toFixed(2)}`;
+
+        const status = document.createElement("p");
+        status.textContent = item.purchased ? "Purchased" : "Pending";
+        status.className = item.purchased ? "purchased-status" : "pending-status";
+
+        details.append(name, info, price, status);
+
+        const actions = document.createElement("div");
+        actions.className = "item-actions";
+
