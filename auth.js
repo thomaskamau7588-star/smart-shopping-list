@@ -56,3 +56,30 @@ signupForm.addEventListener("submit", function(event) {
             return;
         }
 
+           // Create New User
+        const newUser = {
+            fullname: fullname,
+            email: email,
+            password: password
+        };
+
+
+        // Add New User to Users Array
+        users.push(newUser);
+
+
+        // Save Users to Local Storage
+        localStorage.setItem("users", JSON.stringify(users));
+
+
+        // Display Success Message
+        signupMessage.textContent = "Account created successfully!";
+        signupMessage.style.color = "green";
+
+
+        // Clear Signup Form
+        signupForm.reset();
+
+    });
+
+
