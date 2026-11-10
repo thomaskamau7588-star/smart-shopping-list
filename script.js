@@ -186,3 +186,45 @@ function deleteItem(id) {
     displayShoppingItems();
 }
 
+// Update Shopping Summary
+function updateSummary() {
+    const total = shoppingList.reduce((sum, item) => sum + item.quantity, 0);
+
+    const purchased = shoppingList.reduce(
+        (sum, item) => sum + (item.purchased ? item.quantity : 0), 0
+    );
+
+    const cost = shoppingList.reduce(
+        (sum, item) => sum + item.price * item.quantity, 0
+    );
+
+    totalItems.textContent = total;
+    purchasedItems.textContent = purchased;
+    remainingItems.textContent = total - purchased;
+    estimatedCost.textContent = `KSh ${cost.toLocaleString("en-KE", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })}`;
+}
+
+// Search and Filter
+searchInput.addEventListener("input", displayShoppingItems);
+categoryFilter.addEventListener("change", displayShoppingItems);
+statusFilter.addEventListener("change", displayShoppingItems);
+
+// Clear Shopping List
+clearButton.addEventListener("click", function() {
+    if (!shoppingList.length) {
+        alert("Your shopping list is already empty.");
+        return;
+    }
+
+    if (confirm("Are you sure you want to clear your shopping list?")) {
+        shoppingList = [];
+        saveShoppingList();
+        displayShoppingItems();
+    }
+});
+
+// Initial Display
+displayShoppingItems();
