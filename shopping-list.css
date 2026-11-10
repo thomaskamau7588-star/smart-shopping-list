@@ -31,6 +31,7 @@ header {
     color: var(--white);
     text-align: center;
     padding: 30px 15px;
+    position: relative;
 }
 
 header h1 {
@@ -44,8 +45,9 @@ header p {
 
 /* Home Button */
 .home-button {
-    display: inline-block;
-    margin-top: 15px;
+    position: absolute;
+    top: 20px;
+    right: 25px;
     padding: 10px 20px;
     background-color: var(--white);
     color: var(--primary-green);
@@ -262,6 +264,13 @@ footer {
 
     header h1 {
         font-size: 24px;
+    }
+
+    .home-button {
+        top: 10px;
+        right: 10px;
+        padding: 7px 12px;
+        font-size: 13px;
     }
 
     .summary {

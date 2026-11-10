@@ -1,3 +1,4 @@
+
 // Get HTML Elements
 const shoppingForm = document.getElementById("shopping-form");
 const shoppingItems = document.getElementById("shopping-items");
@@ -46,57 +47,115 @@ function displayShoppingItems() {
     );
 
     emptyMessage.style.display = filteredItems.length ? "none" : "block";
+
     emptyMessage.textContent = shoppingList.length
         ? "No matching shopping items found."
         : "Your shopping list is empty. Add your first item!";
 
     shoppingItems.appendChild(emptyMessage);
 
-        // Create Shopping Item Cards
-    filteredItems.forEach(item => {
-        const card = document.createElement("div");
-        card.className = "shopping-item";
+    // Create Shopping Table
+    if (filteredItems.length > 0) {
 
-        const details = document.createElement("div");
-        details.className = "item-details";
+        const table = document.createElement("table");
+        table.className = "shopping-table";
 
-        const name = document.createElement("h3");
-        name.textContent = item.name;
+        // Create Table Header
+        const thead = document.createElement("thead");
+        const headerRow = document.createElement("tr");
 
-        const info = document.createElement("p");
-        info.textContent = `Quantity: ${item.quantity} | Category: ${item.category}`;
+        const headings = [
+            "Item",
+            "Quantity",
+            "Category",
+            "Unit Price",
+            "Total Price",
+            "Status",
+            "Actions"
+        ];
 
-        const price = document.createElement("p");
-        price.textContent = `Total: KSh ${(item.price * item.quantity).toFixed(2)}`;
+        headings.forEach(heading => {
+            const th = document.createElement("th");
+            th.textContent = heading;
+            headerRow.appendChild(th);
+        });
 
-        const status = document.createElement("p");
-        status.textContent = item.purchased ? "Purchased" : "Pending";
-        status.className = item.purchased ? "purchased-status" : "pending-status";
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
 
-        details.append(name, info, price, status);
+        // Create Table Body
+        const tbody = document.createElement("tbody");
 
-        const actions = document.createElement("div");
-        actions.className = "item-actions";
+        filteredItems.forEach(item => {
 
-  // Create Action Buttons
-        const createButton = (text, action) => {
-            const button = document.createElement("button");
-            button.type = "button";
-            button.textContent = text;
-            button.addEventListener("click", action);
-            return button;
-        };
+            const row = document.createElement("tr");
 
-        actions.append(
-            createButton(item.purchased ? "Undo Purchase" : "Mark Purchased",
-                () => togglePurchased(item.id)),
-            createButton("Edit", () => editItem(item.id)),
-            createButton("Delete", () => deleteItem(item.id))
-        );
+            // Item Name
+            const nameCell = document.createElement("td");
+            nameCell.textContent = item.name;
 
-        card.append(details, actions);
-        shoppingItems.appendChild(card);
-    });
+            // Quantity
+            const quantityCell = document.createElement("td");
+            quantityCell.textContent = item.quantity;
+
+            // Category
+            const categoryCell = document.createElement("td");
+            categoryCell.textContent = item.category;
+
+            // Unit Price
+            const priceCell = document.createElement("td");
+            priceCell.textContent = `KSh ${item.price.toFixed(2)}`;
+
+            // Total Price
+            const totalCell = document.createElement("td");
+            totalCell.textContent =
+                `KSh ${(item.price * item.quantity).toFixed(2)}`;
+
+            // Status
+            const statusCell = document.createElement("td");
+            statusCell.textContent = item.purchased ? "Purchased" : "Pending";
+            statusCell.className = item.purchased
+                ? "purchased-status"
+                : "pending-status";
+
+            // Actions
+            const actionsCell = document.createElement("td");
+
+            // Create Action Buttons
+            const createButton = (text, action) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = text;
+                button.addEventListener("click", action);
+                return button;
+            };
+
+            actionsCell.append(
+                createButton(
+                    item.purchased ? "Undo" : "Mark Purchased",
+                    () => togglePurchased(item.id)
+                ),
+                createButton("Edit", () => editItem(item.id)),
+                createButton("Delete", () => deleteItem(item.id))
+            );
+
+            // Add Cells to Row
+            row.append(
+                nameCell,
+                quantityCell,
+                categoryCell,
+                priceCell,
+                totalCell,
+                statusCell,
+                actionsCell
+            );
+
+            tbody.appendChild(row);
+        });
+
+        table.appendChild(tbody);
+        shoppingItems.appendChild(table);
+    }
 
     updateSummary();
 }
@@ -116,7 +175,7 @@ shoppingForm.addEventListener("submit", function(event) {
         return;
     }
 
-     // Create New Item
+    // Create New Item
     const newItem = {
         id: Date.now().toString(),
         name,
@@ -168,7 +227,12 @@ function editItem(id) {
 
     shoppingList = shoppingList.map(current =>
         current.id === id
-            ? { ...current, name: name.trim(), quantity: newQuantity, price: newPrice }
+            ? {
+                ...current,
+                name: name.trim(),
+                quantity: newQuantity,
+                price: newPrice
+            }
             : current
     );
 
@@ -188,7 +252,9 @@ function deleteItem(id) {
 
 // Update Shopping Summary
 function updateSummary() {
-    const total = shoppingList.reduce((sum, item) => sum + item.quantity, 0);
+    const total = shoppingList.reduce(
+        (sum, item) => sum + item.quantity, 0
+    );
 
     const purchased = shoppingList.reduce(
         (sum, item) => sum + (item.purchased ? item.quantity : 0), 0
@@ -201,6 +267,7 @@ function updateSummary() {
     totalItems.textContent = total;
     purchasedItems.textContent = purchased;
     remainingItems.textContent = total - purchased;
+
     estimatedCost.textContent = `KSh ${cost.toLocaleString("en-KE", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
@@ -214,6 +281,7 @@ statusFilter.addEventListener("change", displayShoppingItems);
 
 // Clear Shopping List
 clearButton.addEventListener("click", function() {
+
     if (!shoppingList.length) {
         alert("Your shopping list is already empty.");
         return;
