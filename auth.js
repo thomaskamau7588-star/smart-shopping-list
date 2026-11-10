@@ -154,3 +154,15 @@ if (loginForm) {
             email: existingUser.email
         }));
 
+          // Display Success Message
+        loginMessage.textContent = "Login successful! Redirecting...";
+        loginMessage.style.color = "green";
+
+
+        // Redirect to Shopping List
+        window.location.href = "shopping-list.html";
+
+    });
+
+}
+
