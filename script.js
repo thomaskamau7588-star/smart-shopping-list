@@ -78,3 +78,25 @@ function displayShoppingItems() {
         const actions = document.createElement("div");
         actions.className = "item-actions";
 
+  // Create Action Buttons
+        const createButton = (text, action) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = text;
+            button.addEventListener("click", action);
+            return button;
+        };
+
+        actions.append(
+            createButton(item.purchased ? "Undo Purchase" : "Mark Purchased",
+                () => togglePurchased(item.id)),
+            createButton("Edit", () => editItem(item.id)),
+            createButton("Delete", () => deleteItem(item.id))
+        );
+
+        card.append(details, actions);
+        shoppingItems.appendChild(card);
+    });
+
+    updateSummary();
+}
