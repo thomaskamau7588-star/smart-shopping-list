@@ -1,7 +1,5 @@
 
-// ================================
-// SIGNUP FUNCTIONALITY
-// ================================
+// signup functionality
 
 // Get Signup Form
 const signupForm = document.getElementById("signup-form");
@@ -92,7 +90,6 @@ if (signupForm) {
     });
 
 }
-
 
 
 
