@@ -115,3 +115,74 @@ shoppingForm.addEventListener("submit", function(event) {
         alert("Please enter valid item details.");
         return;
     }
+
+     // Create New Item
+    const newItem = {
+        id: Date.now().toString(),
+        name,
+        quantity,
+        category,
+        price,
+        purchased: false
+    };
+
+    shoppingList.push(newItem);
+
+    saveShoppingList();
+    shoppingForm.reset();
+    displayShoppingItems();
+});
+
+// Mark Item as Purchased
+function togglePurchased(id) {
+    shoppingList = shoppingList.map(item =>
+        item.id === id ? { ...item, purchased: !item.purchased } : item
+    );
+
+    saveShoppingList();
+    displayShoppingItems();
+}
+
+// Edit Shopping Item
+function editItem(id) {
+    const item = shoppingList.find(item => item.id === id);
+    if (!item) return;
+
+    const name = prompt("Enter item name:", item.name);
+    if (name === null) return;
+
+    const quantity = prompt("Enter quantity:", item.quantity);
+    if (quantity === null) return;
+
+    const price = prompt("Enter price per item:", item.price);
+    if (price === null) return;
+
+    const newQuantity = Number(quantity);
+    const newPrice = Number(price);
+
+    if (!name.trim() || !Number.isInteger(newQuantity) ||
+        newQuantity < 1 || !Number.isFinite(newPrice) || newPrice < 0) {
+        alert("Please enter valid details.");
+        return;
+    }
+
+    shoppingList = shoppingList.map(current =>
+        current.id === id
+            ? { ...current, name: name.trim(), quantity: newQuantity, price: newPrice }
+            : current
+    );
+
+    saveShoppingList();
+    displayShoppingItems();
+}
+
+// Delete Shopping Item
+function deleteItem(id) {
+    if (!confirm("Are you sure you want to delete this item?")) return;
+
+    shoppingList = shoppingList.filter(item => item.id !== id);
+
+    saveShoppingList();
+    displayShoppingItems();
+}
+
