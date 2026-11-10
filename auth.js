@@ -1,26 +1,33 @@
+
+// ================================
+// SIGNUP FUNCTIONALITY
+// ================================
+
 // Get Signup Form
 const signupForm = document.getElementById("signup-form");
 
-
+// Get Signup Message
 const signupMessage = document.getElementById("signup-message");
 
+// Handle Signup Form Submission
+if (signupForm) {
 
-signupForm.addEventListener("submit", function(event) {
+    signupForm.addEventListener("submit", function(event) {
 
-    // Prevent Page Refresh
-    event.preventDefault();
+        // Prevent Page Refresh
+        event.preventDefault();
+
+        // Get User Input Values
+        const fullname = document.getElementById("fullname").value.trim();
+
+        const email = document.getElementById("email").value.trim().toLowerCase();
+
+        const password = document.getElementById("password").value;
+
+        const confirmPassword = document.getElementById("confirm-password").value;
 
 
-    // Get User Input Values
-    const fullname = document.getElementById("fullname").value.trim();
-
-    const email = document.getElementById("email").value.trim().toLowerCase();
-
-    const password = document.getElementById("password").value;
-
-    const confirmPassword = document.getElementById("confirm-password").value;
-
-      // Check if Passwords Match
+        // Check if Passwords Match
         if (password !== confirmPassword) {
 
             signupMessage.textContent = "Passwords do not match!";
@@ -29,7 +36,8 @@ signupForm.addEventListener("submit", function(event) {
             return;
         }
 
-           // Check Password Length
+
+        // Check Password Length
         if (password.length < 6) {
 
             signupMessage.textContent = "Password must be at least 6 characters!";
@@ -38,17 +46,17 @@ signupForm.addEventListener("submit", function(event) {
             return;
         }
 
-         // Get Existing Users from Local Storage
+
+        // Get Existing Users
         let users = JSON.parse(localStorage.getItem("users")) || [];
 
 
         // Check if Email Already Exists
         const existingUser = users.find(function(user) {
             return user.email === email;
-
         });
 
-         if (existingUser) {
+        if (existingUser) {
 
             signupMessage.textContent = "This email is already registered!";
             signupMessage.style.color = "red";
@@ -56,7 +64,8 @@ signupForm.addEventListener("submit", function(event) {
             return;
         }
 
-           // Create New User
+
+        // Create New User
         const newUser = {
             fullname: fullname,
             email: email,
@@ -64,7 +73,7 @@ signupForm.addEventListener("submit", function(event) {
         };
 
 
-        // Add New User to Users Array
+        // Add User to Array
         users.push(newUser);
 
 
@@ -82,4 +91,24 @@ signupForm.addEventListener("submit", function(event) {
 
     });
 
+}
 
+
+
+
+// login functionality
+
+
+// Get Login Form
+const loginForm = document.getElementById("login-form");
+
+// Get Login Message
+const loginMessage = document.getElementById("login-message");
+
+// Handle Login Form Submission
+if (loginForm) {
+
+    loginForm.addEventListener("submit", function(event) {
+
+        // Prevent Page Refresh
+        event.preventDefault();
